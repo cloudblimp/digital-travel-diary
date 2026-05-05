@@ -1,0 +1,152 @@
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { motion } from 'framer-motion';
+import toast from 'react-hot-toast';
+import { useAuth } from '../contexts/AuthContext';
+
+export default function Signup() {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const { signup, signInWithGoogle } = useAuth();
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError(null);
+    if (password !== confirmPassword) {
+      toast.error('Passwords do not match');
+      return setError('Passwords do not match');
+    }
+    setLoading(true);
+    try {
+      await signup(email, password);
+      toast.success('Account created successfully! 🎉');
+      navigate('/');
+    } catch (err) {
+      console.error('Signup error', err);
+      const errorMsg = err.message || 'Failed to create account';
+      setError(errorMsg);
+      toast.error(errorMsg);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleGoogleSignIn = async () => {
+    setError(null);
+    setLoading(true);
+    try {
+      await signInWithGoogle();
+      toast.success('Signed up with Google! 🚀');
+      navigate('/');
+    } catch (err) {
+      console.error('Google sign-in error', err);
+      const errorMsg = err.message || 'Google sign-in failed';
+      setError(errorMsg);
+      toast.error(errorMsg);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <motion.div 
+      className="flex items-center justify-center min-h-screen w-full px-4 py-8 md:min-h-[calc(100vh-64px)] md:px-8 bg-gradient-to-br from-slate-900 via-emerald-900 to-slate-900"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.5 }}
+    >
+      <motion.div 
+        className="w-full max-w-sm p-4 sm:p-6 md:p-8 md:max-w-md bg-slate-900/80 backdrop-blur-md rounded-xl shadow-2xl border border-emerald-500/30"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.1 }}
+      >
+        <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-center text-white mb-4 sm:mb-6">Sign Up</h2>
+
+        {error && (
+          <div className="p-2 sm:p-3 text-xs sm:text-sm bg-red-500/20 text-red-200 rounded-md mb-3 sm:mb-4 border border-red-500/30">
+            {error}
+          </div>
+        )}
+
+        <form onSubmit={handleSubmit}>
+          <div className="mb-3 sm:mb-4">
+            <label className="block text-emerald-100 text-xs sm:text-sm font-semibold mb-1 sm:mb-2" htmlFor="email">
+              Email
+            </label>
+            <input
+              type="email"
+              id="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="w-full px-2 sm:px-3 py-2 text-sm sm:text-base border border-emerald-500/30 rounded-lg bg-slate-800/50 text-white placeholder-emerald-200/40 focus:outline-none focus:ring-2 focus:ring-emerald-500 transition-colors"
+              required
+            />
+          </div>
+          <div className="mb-3 sm:mb-4">
+            <label className="block text-emerald-100 text-xs sm:text-sm font-semibold mb-1 sm:mb-2" htmlFor="password">
+              Password (6+ characters)
+            </label>
+            <input
+              type="password"
+              id="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              className="w-full px-2 sm:px-3 py-2 text-sm sm:text-base border border-emerald-500/30 rounded-lg bg-slate-800/50 text-white placeholder-emerald-200/40 focus:outline-none focus:ring-2 focus:ring-emerald-500 transition-colors"
+              required
+            />
+          </div>
+          <div className="mb-4 sm:mb-6">
+            <label className="block text-emerald-100 text-xs sm:text-sm font-semibold mb-1 sm:mb-2" htmlFor="confirm-password">
+              Confirm Password
+            </label>
+            <input
+              type="password"
+              id="confirm-password"
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+              className="w-full px-2 sm:px-3 py-2 text-sm sm:text-base border border-emerald-500/30 rounded-lg bg-slate-800/50 text-white placeholder-emerald-200/40 focus:outline-none focus:ring-2 focus:ring-emerald-500 transition-colors"
+              required
+            />
+          </div>
+          <button
+            type="submit"
+            disabled={loading}
+            className="w-full bg-emerald-600 text-white py-2 sm:py-3 px-3 sm:px-4 text-sm sm:text-base rounded-lg hover:bg-emerald-700 active:bg-emerald-800 active:scale-95 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-opacity-50 disabled:bg-slate-600 transition-all duration-75 font-medium min-h-11 sm:min-h-12"
+          >
+            {loading ? 'Signing Up...' : 'Sign Up'}
+          </button>
+        </form>
+
+        <div className="mt-4 sm:mt-6">
+          <button
+            onClick={handleGoogleSignIn}
+            disabled={loading}
+            className="w-full flex items-center justify-center gap-2 py-2 sm:py-3 px-3 sm:px-4 text-sm sm:text-base border border-emerald-500/30 rounded-lg hover:bg-emerald-500/10 active:bg-emerald-500/20 active:scale-95 disabled:opacity-60 transition-all duration-75 font-medium min-h-11 sm:min-h-12 text-white"
+          >
+            {/* Inline Google logo to avoid external asset dependency */}
+            <svg className="h-5 w-5" viewBox="0 0 533.5 544.3" xmlns="http://www.w3.org/2000/svg">
+              <path fill="#4285f4" d="M533.5 278.4c0-17.4-1.4-34.1-4.1-50.3H272v95.3h147.5c-6.4 34.7-25 64.1-53.4 83.7v69.6h86.2c50.4-46.4 81.2-115 81.2-198.3z"/>
+              <path fill="#34a853" d="M272 544.3c72.6 0 133.7-24 178.3-65.2l-86.2-69.6c-24 16.1-54.7 25.6-92.1 25.6-70.7 0-130.6-47.8-152-112.1H31.6v70.6C75.9 486 167.6 544.3 272 544.3z"/>
+              <path fill="#fbbc04" d="M120 323.1c-10.7-31.5-10.7-65.6 0-97.1V155.4H31.6c-39.3 77.6-39.3 169.1 0 246.7L120 323.1z"/>
+              <path fill="#ea4335" d="M272 107.7c39 0 74 13.4 101.6 39.6l76.1-76.1C401.1 24.3 342 0 272 0 167.6 0 75.9 58.3 31.6 145.6l88.4 70.4C141.4 155.5 201.3 107.7 272 107.7z"/>
+            </svg>
+            <span>{loading ? 'Signing in...' : 'Continue with Google'}</span>
+          </button>
+        </div>
+
+        <p className="text-center text-emerald-200/60 text-xs sm:text-sm mt-4 sm:mt-6">
+          Already have an account?
+          <Link to="/login" className="text-emerald-400 hover:text-emerald-300 ml-1 transition-colors">
+            Log In
+          </Link>
+        </p>
+      </motion.div>
+    </motion.div>
+  );
+}
+

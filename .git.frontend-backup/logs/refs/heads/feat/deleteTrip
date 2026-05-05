@@ -1,6 +1,0 @@
-0000000000000000000000000000000000000000 1eaee652083c9344bb41991a71e598d00898e063 Shashank Kumar <sahu.sk30@gmail.com.com> 1763206871 +0530	branch: Created from HEAD
-1eaee652083c9344bb41991a71e598d00898e063 4c263c1185c67b421ec0c4c554425dbc28653185 Shashank Kumar <sahu.sk30@gmail.com.com> 1763209836 +0530	commit: feat: added trip setting-> delete and archive
-4c263c1185c67b421ec0c4c554425dbc28653185 e5fb15508bf22f653877d3191325470bfb111809 Shashank Kumar <sahu.sk30@gmail.com.com> 1763276574 +0530	commit: bug fiz
-e5fb15508bf22f653877d3191325470bfb111809 4c263c1185c67b421ec0c4c554425dbc28653185 Shashank Kumar <sahu.sk30@gmail.com.com> 1763276660 +0530	reset: moving to HEAD~1
-4c263c1185c67b421ec0c4c554425dbc28653185 d87e3a42eec88480585558a8e0255cf8c32086d0 Shashank Kumar <sahu.sk30@gmail.com.com> 1763276678 +0530	commit: bug fix
-d87e3a42eec88480585558a8e0255cf8c32086d0 a67bc161fb387f64b7d1f3d25b7b8e9f5ca28291 Shashank Kumar <sahu.sk30@gmail.com.com> 1763277030 +0530	pull origin main: Fast-forward

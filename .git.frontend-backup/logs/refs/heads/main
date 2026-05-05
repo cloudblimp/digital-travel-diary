@@ -1,0 +1,40 @@
+0000000000000000000000000000000000000000 c72d1c468598dd87c77585185ee8c66474f21b9e Shashank Kumar <sahu.sk30@gmail.com.com> 1762087580 +0530	commit (initial): Initial commit
+c72d1c468598dd87c77585185ee8c66474f21b9e e31ebaba43dcd4effcf807e9fbeb4356af84c23f Shashank Kumar <sahu.sk30@gmail.com.com> 1762090065 +0530	commit: Stop tracking firebase config file
+e31ebaba43dcd4effcf807e9fbeb4356af84c23f 74606648ece9d9ad896fc9ccd9082d7e2f0e14ee Shashank Kumar <sahu.sk30@gmail.com.com> 1762090084 +0530	commit: Stop tracking firebase config file
+74606648ece9d9ad896fc9ccd9082d7e2f0e14ee 9204e640159d5977ee92f775c187c45aba3d16fd Shashank Kumar <sahu.sk30@gmail.com.com> 1762156282 +0530	commit: refactor: shift Firebase config values from config.js to .env for security
+9204e640159d5977ee92f775c187c45aba3d16fd 74606648ece9d9ad896fc9ccd9082d7e2f0e14ee Shashank Kumar <sahu.sk30@gmail.com.com> 1762156361 +0530	reset: moving to HEAD~1
+74606648ece9d9ad896fc9ccd9082d7e2f0e14ee 145d50a0f14c9b69b252b3e418766e0bb6367fe6 Shashank Kumar <sahu.sk30@gmail.com.com> 1762156412 +0530	commit: refactor: shift Firebase config values from config.js to .env for security
+145d50a0f14c9b69b252b3e418766e0bb6367fe6 74606648ece9d9ad896fc9ccd9082d7e2f0e14ee Shashank Kumar <sahu.sk30@gmail.com.com> 1762156489 +0530	reset: moving to HEAD~1
+74606648ece9d9ad896fc9ccd9082d7e2f0e14ee 4d3b31febba74c6160882dee9650223fec48ef7c Shashank Kumar <sahu.sk30@gmail.com.com> 1762157384 +0530	commit: Stop tracking .env
+4d3b31febba74c6160882dee9650223fec48ef7c f444b77e9ff4d5097ab09c54b05a1d10787864be Shashank Kumar <sahu.sk30@gmail.com.com> 1762158425 +0530	commit: update
+f444b77e9ff4d5097ab09c54b05a1d10787864be 21958eb45b6a64c8755ed1c663b7a53311f88b8d Shashank Kumar <sahu.sk30@gmail.com.com> 1762159601 +0530	commit: Modified firebase hosting
+21958eb45b6a64c8755ed1c663b7a53311f88b8d e541123a41a63e0659427346c37bc07a0e4bda88 Shashank Kumar <sahu.sk30@gmail.com.com> 1762166056 +0530	commit: Fix: Update project structure and build files
+e541123a41a63e0659427346c37bc07a0e4bda88 47f6ffba0a7848461e18a55d0a630881e6a2cde5 Shashank Kumar <sahu.sk30@gmail.com.com> 1762333151 +0530	commit: Dashboard Added
+47f6ffba0a7848461e18a55d0a630881e6a2cde5 5d48eab2dfbff935ce1947b1e184e6ed7347b501 Shashank Kumar <sahu.sk30@gmail.com.com> 1762862788 +0530	commit: Project update: working
+5d48eab2dfbff935ce1947b1e184e6ed7347b501 01129f5dec3b911d6bf2129b059551bdb613be40 Shashank Kumar <sahu.sk30@gmail.com.com> 1763025982 +0530	commit: fixed: bugs, feat: added photos section for respective trips
+01129f5dec3b911d6bf2129b059551bdb613be40 be47d9d7cc09414fb1ad23531f70765fca6af2a3 Shashank Kumar <sahu.sk30@gmail.com.com> 1763035553 +0530	commit: Bug fix
+be47d9d7cc09414fb1ad23531f70765fca6af2a3 6e372eb5d422bf9c1a333f3f65645d41865da158 Shashank Kumar <sahu.sk30@gmail.com.com> 1763119774 +0530	commit: Updated package.json
+6e372eb5d422bf9c1a333f3f65645d41865da158 025ac95f2ae89662619f6c33aa8956902ca3db68 Shashank Kumar <sahu.sk30@gmail.com.com> 1763123700 +0530	pull origin main: Fast-forward
+025ac95f2ae89662619f6c33aa8956902ca3db68 da26134716cdc5a1003d93261b87368b15bcb4e8 Shashank Kumar <sahu.sk30@gmail.com.com> 1763141993 +0530	pull origin main: Fast-forward
+da26134716cdc5a1003d93261b87368b15bcb4e8 dad1ac6e343019573c55e0ee9ce968f5f0e5cdff Shashank Kumar <sahu.sk30@gmail.com.com> 1763149577 +0530	commit: fixed bugs
+dad1ac6e343019573c55e0ee9ce968f5f0e5cdff 83dabcc93f7ba2fbb95db76708aa744121f28e97 Shashank Kumar <sahu.sk30@gmail.com.com> 1763201401 +0530	commit: Update: UI
+83dabcc93f7ba2fbb95db76708aa744121f28e97 b04ea97ec44318576e45f98d30fb8fce51acab03 Shashank Kumar <sahu.sk30@gmail.com.com> 1763201723 +0530	commit: bug fix: journal entries loading was delayed
+b04ea97ec44318576e45f98d30fb8fce51acab03 eba4616b3d4af3ebffae025a226a4314317a1fd8 Shashank Kumar <sahu.sk30@gmail.com.com> 1763202261 +0530	commit: clean folder structure
+eba4616b3d4af3ebffae025a226a4314317a1fd8 70d09c9c09da034ea9b7831a029f1b39a7c3a54f Shashank Kumar <sahu.sk30@gmail.com.com> 1763202601 +0530	commit: fix: implement critical pre-deployment optimizations
+70d09c9c09da034ea9b7831a029f1b39a7c3a54f d96f8075986538cca0b368badb66a741072d690e Shashank Kumar <sahu.sk30@gmail.com.com> 1763202637 +0530	commit: docs: add comprehensive deployment documentation
+d96f8075986538cca0b368badb66a741072d690e 5d5e43ddfb894a1977b585410808d71095d1ab1f Shashank Kumar <sahu.sk30@gmail.com.com> 1763202672 +0530	commit: docs: add implementation summary for user reference
+5d5e43ddfb894a1977b585410808d71095d1ab1f 96b4240c559663f73b9f0856084db5e899cdf49b Shashank Kumar <sahu.sk30@gmail.com.com> 1763203090 +0530	commit: feat: implement remaining high-priority features
+96b4240c559663f73b9f0856084db5e899cdf49b eba4616b3d4af3ebffae025a226a4314317a1fd8 Shashank Kumar <sahu.sk30@gmail.com.com> 1763205163 +0530	reset: moving to HEAD~4
+eba4616b3d4af3ebffae025a226a4314317a1fd8 a67bc161fb387f64b7d1f3d25b7b8e9f5ca28291 Shashank Kumar <sahu.sk30@gmail.com.com> 1763277386 +0530	pull origin main: Fast-forward
+a67bc161fb387f64b7d1f3d25b7b8e9f5ca28291 9fb41c4ba94d0d3aaab30a850676b0c5781a60c7 Shashank Kumar <sahu.sk30@gmail.com.com> 1763402632 +0530	merge theme-update-phase-1: Fast-forward
+9fb41c4ba94d0d3aaab30a850676b0c5781a60c7 282ea87e49fa2b3667b8f8e7f72924b84eda2aa1 Shashank Kumar <sahu.sk30@gmail.com.com> 1763403293 +0530	commit: clean folder structure
+282ea87e49fa2b3667b8f8e7f72924b84eda2aa1 c77097deb8cd2350d910d619eb7ed20a3e5b5fe8 Shashank Kumar <sahu.sk30@gmail.com.com> 1763721212 +0530	commit: ci: inject VITE env vars for Firebase config at build time
+c77097deb8cd2350d910d619eb7ed20a3e5b5fe8 f7bdf14e17cff90f900272f70f772922431ff8ac Shashank Kumar <sahu.sk30@gmail.com.com> 1763721256 +0530	commit: ci: inject VITE env vars for Firebase config at build time
+f7bdf14e17cff90f900272f70f772922431ff8ac e9aba9e1bf8e2d73fac6ff18dba89f22cb612ab4 Shashank Kumar <sahu.sk30@gmail.com.com> 1764241321 +0530	commit: Minor Bug Fix
+e9aba9e1bf8e2d73fac6ff18dba89f22cb612ab4 22a256402fb6c96c7da3ad276fd0164be7c43eec Shashank Kumar <sahu.sk30@gmail.com.com> 1764241485 +0530	pull origin main --rebase (finish): refs/heads/main onto 956dd52529402e6d3706b2bb6c232526c1d05343
+22a256402fb6c96c7da3ad276fd0164be7c43eec b17d5802173ce9af0583dc81e6fbadc9def1bca7 Shashank Kumar <sahu.sk30@gmail.com.com> 1764241915 +0530	commit: Fix: Minor bugs
+b17d5802173ce9af0583dc81e6fbadc9def1bca7 635354926599f9a2a701c7ad2dc47423bb4ce7b5 Shashank Kumar <sahu.sk30@gmail.com.com> 1764992713 +0530	commit: test: add comprehensive test suite with 39 tests and documentation
+635354926599f9a2a701c7ad2dc47423bb4ce7b5 2b60317d52a3600c90566e03b9b1eee112706c28 Shashank Kumar <sahu.sk30@gmail.com.com> 1764992935 +0530	pull --no-rebase origin main: Merge made by the 'ort' strategy.
+2b60317d52a3600c90566e03b9b1eee112706c28 127d34ec4b48c48dd08fcb59e2df900dde7b2274 Shashank Kumar <sahu.sk30@gmail.com.com> 1764993445 +0530	commit: feat: add comprehensive test suite with 39 tests and Vitest configuration
+127d34ec4b48c48dd08fcb59e2df900dde7b2274 feb77d2afa261905ca3335272f89d018e07dcf98 Shashank Kumar <sahu.sk30@gmail.com.com> 1764994393 +0530	commit: Update: Final Class Diagram
+feb77d2afa261905ca3335272f89d018e07dcf98 11ab45334951c66f8464dba1a35b5832ddae28fc Shashank Kumar <sahu.sk30@gmail.com.com> 1764996011 +0530	commit: fix: update testing-library/react to v16 for React 19 compatibility

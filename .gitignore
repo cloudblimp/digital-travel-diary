@@ -1,0 +1,78 @@
+# Environment variables
+.env
+.env.local
+.env.*.local
+.env.production
+
+# Node modules
+node_modules/
+npm-debug.log
+npm-debug.log.*
+yarn-debug.log
+yarn-error.log
+pnpm-debug.log
+pnpm-error.log
+
+# Build outputs
+dist/
+build/
+.next/
+out/
+*.tgz
+
+# IDE & Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*.swn
+.DS_Store
+*.sublime-project
+*.sublime-workspace
+*.iml
+*.code-workspace
+
+# Dependencies
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Firebase
+.firebase/
+.firebaserc
+firebase-debug.log
+firebase-export-*/
+emulator-data/
+
+# OS files
+.DS_Store
+Thumbs.db
+*.log
+
+# Testing
+coverage/
+.nyc_output/
+
+# Database
+*.sqlite
+*.sqlite3
+*.db
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+.cache/
+
+# Cloudinary uploads (if stored locally)
+public/uploads/
+
+# IDE debug
+.vscode/launch.json
+.vscode/extensions.json
+
+# Misc
+.eslintcache
+.turbo/
+
+.git.frontend-backup

@@ -1,7 +1,9 @@
 require('dotenv').config();
 const express = require('express');
 const http = require('http');
+const fs = require('fs');
 const path = require('path');
+const pool = require('./config/db');
 const { Server } = require('socket.io');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
@@ -112,6 +114,34 @@ app.get('*', (req, res) => {
 });
 
 // ─── Global error handler ───────────────────────────
+// ─── Database Auto-Initialization ───────────────────
+async function initDatabase() {
+  try {
+    // Check if the users table exists
+    const checkTable = await pool.query(`
+      SELECT EXISTS (
+        SELECT FROM information_schema.tables 
+        WHERE table_name = 'users'
+      );
+    `);
+
+    if (!checkTable.rows[0].exists) {
+      console.log('📦 Database is empty. Initializing schema...');
+      const schemaPath = path.join(__dirname, 'schema.sql');
+      const schemaSql = fs.readFileSync(schemaPath, 'utf8');
+      
+      // Execute schema
+      await pool.query(schemaSql);
+      console.log('✅ Database schema initialized successfully');
+    } else {
+      console.log('📖 Database schema already exists');
+    }
+  } catch (err) {
+    console.error('❌ Database initialization failed:', err);
+    // Don't exit, maybe it's just a permissions issue
+  }
+}
+
 app.use((err, _req, res, _next) => {
   console.error('Unhandled error:', err);
   res.status(err.status || 500).json({ error: err.message || 'Internal server error' });
@@ -119,6 +149,9 @@ app.use((err, _req, res, _next) => {
 
 // ─── Start ──────────────────────────────────────────
 const PORT = process.env.PORT || 5001;
-server.listen(PORT, () => {
+server.listen(PORT, async () => {
   console.log(`🚀 JourneyStack server running on http://localhost:${PORT}`);
+  
+  // Run auto-init
+  await initDatabase();
 });

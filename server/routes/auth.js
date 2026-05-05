@@ -402,7 +402,7 @@ router.get('/google',
 );
 
 router.get('/google/callback',
-  passport.authenticate('google', { session: false, failureRedirect: `${process.env.CLIENT_URL}/login?error=oauth_failed` }),
+  passport.authenticate('google', { session: false, failureRedirect: `/login?error=oauth_failed` }),
   async (req, res) => {
     try {
       const user = req.user;
@@ -411,11 +411,12 @@ router.get('/google/callback',
       await saveRefreshToken(user.id, refreshToken);
       setRefreshCookie(res, refreshToken);
 
-      // Redirect to frontend with token in query param (frontend reads it and stores in localStorage)
-      res.redirect(`${process.env.CLIENT_URL}/auth/callback?token=${accessToken}`);
+      // Redirect to frontend with token in query param
+      // Using relative paths ensures it works on both localhost and live Railway URL automatically
+      res.redirect(`/auth/callback?token=${accessToken}`);
     } catch (err) {
       console.error('google callback error:', err);
-      res.redirect(`${process.env.CLIENT_URL}/login?error=server_error`);
+      res.redirect(`/login?error=server_error`);
     }
   }
 );

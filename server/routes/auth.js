@@ -68,7 +68,7 @@ passport.use(new GoogleStrategy(
   {
     clientID:     process.env.GOOGLE_CLIENT_ID     || 'TODO_GOOGLE_CLIENT_ID',
     clientSecret: process.env.GOOGLE_CLIENT_SECRET || 'TODO_GOOGLE_CLIENT_SECRET',
-    callbackURL:  `${process.env.SERVER_URL || 'http://localhost:5000'}/api/auth/google/callback`,
+    callbackURL:  `${process.env.SERVER_URL || 'http://localhost:5001'}/api/auth/google/callback`,
   },
   async (_accessToken, _refreshToken, profile, done) => {
     try {

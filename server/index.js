@@ -1,6 +1,7 @@
 require('dotenv').config();
 const express = require('express');
 const http = require('http');
+const path = require('path');
 const { Server } = require('socket.io');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
@@ -96,8 +97,19 @@ app.use('/api',               collaborationRoutes);
 // ─── Health check ───────────────────────────────────
 app.get('/api/health', (_req, res) => res.json({ status: 'ok' }));
 
-// ─── 404 ────────────────────────────────────────────
-app.use((_req, res) => res.status(404).json({ error: 'Route not found' }));
+// ─── Frontend Static Hosting (Production) ─────────────
+// Serve the built React app statically from the journey-stack/dist folder
+app.use(express.static(path.join(__dirname, '../journey-stack/dist')));
+
+// ─── 404 (API routes) ───────────────────────────────
+// Only return JSON 404 for paths starting with /api
+app.use('/api', (req, res) => res.status(404).json({ error: 'Route not found' }));
+
+// ─── Catch-all for React Router ─────────────────────
+// All other requests get the React index.html so frontend routing works
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../journey-stack/dist/index.html'));
+});
 
 // ─── Global error handler ───────────────────────────
 app.use((err, _req, res, _next) => {

@@ -62,7 +62,10 @@ export function AuthProvider({ children }) {
   // ─── Google OAuth ─────────────────────────────────────────────────────────
   // Redirects browser to server; server redirects back to /auth/callback?token=…
   const signInWithGoogle = useCallback(() => {
-    const apiBase = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+    // In production, use relative path. In dev, use port 5001.
+    const apiBase = import.meta.env.PROD 
+      ? '/api' 
+      : (import.meta.env.VITE_API_URL || 'http://localhost:5001/api');
     window.location.href = `${apiBase}/auth/google`;
   }, []);
 

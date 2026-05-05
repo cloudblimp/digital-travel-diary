@@ -1,6 +1,9 @@
 import { io } from 'socket.io-client';
 
-const SOCKET_URL = import.meta.env.VITE_API_URL?.replace('/api', '') || 'http://localhost:5000';
+// In production, empty string tells socket.io to use the current host (the Render URL).
+const SOCKET_URL = import.meta.env.PROD 
+  ? '' 
+  : (import.meta.env.VITE_API_URL?.replace('/api', '') || 'http://localhost:5001');
 
 let socket = null;
 

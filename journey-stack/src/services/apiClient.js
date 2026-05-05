@@ -1,6 +1,10 @@
 import axios from 'axios';
 
-const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+// In production (when hosted as a monolithic app), use the relative path '/api'.
+// This avoids CORS issues and ensures it works on any domain dynamically.
+const API_BASE = import.meta.env.PROD 
+  ? '/api' 
+  : (import.meta.env.VITE_API_URL || 'http://localhost:5001/api');
 
 const apiClient = axios.create({
   baseURL:         API_BASE,

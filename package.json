@@ -1,0 +1,8 @@
+{
+  "name": "journeystack-monolith",
+  "private": true,
+  "scripts": {
+    "build": "npm install --prefix server && npm run build --prefix server",
+    "start": "npm start --prefix server"
+  }
+}

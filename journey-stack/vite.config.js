@@ -12,7 +12,6 @@ export default defineConfig({
     rollupOptions: {
       output: {
         manualChunks: {
-          'firebase': ['firebase/app', 'firebase/auth', 'firebase/firestore', 'firebase/storage'],
           'ui': ['react', 'react-dom', 'react-router-dom'],
           'animations': ['framer-motion'],
           'toast': ['react-hot-toast'],

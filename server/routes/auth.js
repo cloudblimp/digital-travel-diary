@@ -335,7 +335,9 @@ router.post('/forgot-password', async (req, res) => {
       [tokenHash, expires, userId]
     );
 
-    const resetUrl = `${process.env.CLIENT_URL}/reset-password?token=${resetToken}`;
+    // In production monolith, the frontend is served from the same origin as the server
+    const baseUrl = process.env.SERVER_URL || process.env.CLIENT_URL || `${req.protocol}://${req.get('host')}`;
+    const resetUrl = `${baseUrl}/reset-password?token=${resetToken}`;
 
     const mailer = await createMailer();
     await mailer.sendMail({

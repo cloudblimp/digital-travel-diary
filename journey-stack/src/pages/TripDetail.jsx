@@ -11,12 +11,11 @@ import NewEntryModal from '../components/NewEntryModal.jsx';
 import EntryDetailModal from '../components/EntryDetailModal.jsx';
 import EditEntryModal from '../components/EditEntryModal.jsx';
 import ItineraryModal from '../components/ItineraryModal.jsx';
-import LocationModal from '../components/LocationModal.jsx';
 import TripPhotos from '../components/TripPhotos.jsx';
 import TripLocationMap from '../components/TripLocationMap.jsx';
 import TripDetailHeroPlaceholder from '../components/TripDetailHeroPlaceholder.jsx';
 import CollaboratorsPanel from '../components/CollaboratorsPanel.jsx';
-import { FaCalendarAlt, FaArrowLeft, FaPlus, FaMapMarkerAlt } from 'react-icons/fa';
+import { FaCalendarAlt, FaArrowLeft, FaPlus } from 'react-icons/fa';
 import { parseLocalDate, formatISTDateTime } from '../utils/dateUtils';
 
 const containerVariants = {
@@ -43,7 +42,6 @@ export default function TripDetail() {
   const [isDetailModalOpen,  setIsDetailModalOpen]  = useState(false);
   const [isEditModalOpen,    setIsEditModalOpen]    = useState(false);
   const [isItineraryModalOpen, setIsItineraryModalOpen] = useState(false);
-  const [isLocationModalOpen,  setIsLocationModalOpen]  = useState(false);
   const [isDeleting,         setIsDeleting]         = useState(false);
   const [isUpdating,         setIsUpdating]         = useState(false);
   const [tripLoading,        setTripLoading]        = useState(true);
@@ -210,18 +208,12 @@ export default function TripDetail() {
               </Link>
             </div>
 
-            <div className="absolute top-4 right-4 z-20 flex flex-col gap-2">
+            <div className="absolute top-4 right-4 z-20">
               <button
                 onClick={() => setIsItineraryModalOpen(true)}
                 className="inline-flex items-center px-4 py-2 bg-emerald-600/90 hover:bg-emerald-700 rounded-lg text-sm font-medium text-white transition-colors shadow-lg"
               >
                 <FaCalendarAlt className="mr-2" /> View Itinerary
-              </button>
-              <button
-                onClick={() => setIsLocationModalOpen(true)}
-                className="inline-flex items-center px-4 py-2 bg-emerald-600/90 hover:bg-emerald-700 rounded-lg text-sm font-medium text-white transition-colors shadow-lg"
-              >
-                <FaMapMarkerAlt className="mr-2" /> Add/Edit Location
               </button>
             </div>
 
@@ -349,15 +341,6 @@ export default function TripDetail() {
             onClose={() => setIsItineraryModalOpen(false)}
             trip={formattedTrip}
             activities={activities}
-          />
-          <LocationModal
-            isOpen={isLocationModalOpen}
-            onClose={() => setIsLocationModalOpen(false)}
-            tripId={tripId}
-            existingLocations={trip?.locations || []}
-            onLocationsUpdated={(newLocations) => {
-              setTrip(prev => ({ ...prev, locations: newLocations }));
-            }}
           />
         </>
       )}

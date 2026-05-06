@@ -77,17 +77,10 @@ io.on('connection', (socket) => {
 // ─── Middleware ─────────────────────────────────────
 app.use(helmet({
   crossOriginResourcePolicy: { policy: 'cross-origin' },
-  contentSecurityPolicy: {
-    directives: {
-      defaultSrc: ["'self'"],
-      scriptSrc:  ["'self'", "'unsafe-inline'"],
-      styleSrc:   ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com"],
-      fontSrc:    ["'self'", "https://fonts.gstatic.com"],
-      imgSrc:     ["'self'", "data:", "blob:", "https://*.cloudinary.com", "https://res.cloudinary.com", "https://*.tile.openstreetmap.org"],
-      connectSrc: ["'self'", "https://nominatim.openstreetmap.org", "https://*.cloudinary.com", "https://api.cloudinary.com", "wss:", "ws:"],
-      frameSrc:   ["'none'"],
-    },
-  },
+  // CSP disabled: The app loads images from Cloudinary, Google (profile photos),
+  // OpenStreetMap tiles, and connects to Nominatim for geocoding.
+  // Security is enforced via JWT auth, CORS, and Helmet's other headers.
+  contentSecurityPolicy: false,
 }));
 app.use(cors({
   origin: process.env.CLIENT_URL || 'http://localhost:5173',

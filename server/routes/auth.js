@@ -52,9 +52,9 @@ function formatUser(row) {
 }
 
 async function createMailer() {
+  // Use 'gmail' service shorthand — handles host, port, and TLS automatically
   return nodemailer.createTransport({
-    host: process.env.SMTP_HOST,
-    port: parseInt(process.env.SMTP_PORT || '587'),
+    service: 'gmail',
     auth: {
       user: process.env.SMTP_USER,
       pass: process.env.SMTP_PASS,

@@ -56,7 +56,10 @@ export default function EditEntryModal({ isOpen, onClose, entry, onSave, isLoadi
       // Build multipart form data so a new photo is uploaded through Cloudinary
       const formData = new FormData();
       formData.append('title',    entryData.title);
-      formData.append('dateTime', entryData.dateTime);
+      // Append IST offset so PostgreSQL stores the correct absolute time
+      const dt = entryData.dateTime;
+      const dateTimeIST = dt && !dt.includes('+') ? `${dt}:00+05:30` : dt;
+      formData.append('dateTime', dateTimeIST);
       formData.append('location', entryData.location || '');
       formData.append('story',    entryData.story || '');
       // If a new file was picked, attach it; otherwise pass the existing URL (or empty to clear)

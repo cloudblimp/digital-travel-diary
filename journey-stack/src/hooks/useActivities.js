@@ -17,9 +17,11 @@ export function useActivities() {
     setError(null);
 
     try {
+      // Append IST offset so PostgreSQL stores the correct absolute time
+      const dateTimeIST = dateTime && !dateTime.includes('+') ? `${dateTime}:00+05:30` : dateTime;
       const { data } = await apiClient.post(`/trips/${tripId}/activities`, {
         title,
-        dateTime,
+        dateTime: dateTimeIST,
         location: location || '',
         description: description || '',
         type: type || 'Activity',

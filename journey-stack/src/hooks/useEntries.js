@@ -19,7 +19,10 @@ export function useEntries() {
     try {
       const formData = new FormData();
       formData.append('title',    title);
-      formData.append('dateTime', dateTime);
+      // Append IST offset so PostgreSQL stores the correct absolute time
+      // datetime-local gives "2026-05-06T06:04" (no timezone) — we tell Postgres it's IST
+      const dateTimeIST = dateTime && !dateTime.includes('+') ? `${dateTime}:00+05:30` : dateTime;
+      formData.append('dateTime', dateTimeIST);
       formData.append('location', location || '');
       formData.append('story',    story || '');
       formData.append('type',     type || 'Activity');

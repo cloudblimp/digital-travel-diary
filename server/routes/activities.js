@@ -56,13 +56,14 @@ router.post('/trips/:tripId/activities', authenticate, requireTripAccess, async 
     );
 
     const activity = rows[0];
+    const formatted = formatActivity({ ...activity, author_name: req.user.displayName });
 
     req.io?.to(`trip:${req.params.tripId}`).emit('trip:activity_added', {
       tripId:   req.params.tripId,
-      activity: { ...activity, authorName: req.user.displayName },
+      activity: formatted,
     });
 
-    res.status(201).json({ activity: formatActivity({ ...activity, author_name: req.user.displayName }) });
+    res.status(201).json({ activity: formatted });
   } catch (err) {
     console.error('POST activity error:', err);
     res.status(500).json({ error: 'Server error' });

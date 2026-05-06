@@ -67,14 +67,15 @@ router.post('/trips/:tripId/entries', authenticate, requireTripAccess, uploadEnt
     );
 
     const entry = rows[0];
+    const formatted = formatEntry({ ...entry, author_name: req.user.displayName, author_photo: req.user.photoUrl });
 
     // Emit real-time event to trip room
     req.io?.to(`trip:${req.params.tripId}`).emit('trip:entry_added', {
       tripId: req.params.tripId,
-      entry:  { ...entry, authorName: req.user.displayName, authorPhoto: req.user.photoUrl },
+      entry:  formatted,
     });
 
-    res.status(201).json({ entry: formatEntry({ ...entry, author_name: req.user.displayName, author_photo: req.user.photoUrl }) });
+    res.status(201).json({ entry: formatted });
   } catch (err) {
     console.error('POST entry error:', err);
     res.status(500).json({ error: 'Server error' });

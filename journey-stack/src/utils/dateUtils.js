@@ -97,3 +97,21 @@ export const getISTDateKey = (isoString) => {
   const day = String(istTime.getDate()).padStart(2, '0');
   return `${year}-${month}-${day}`;
 };
+
+/**
+ * Format an ISO timestamp string into a human-readable IST date + time.
+ * Example: "02 May 2026, 4:30 PM IST"
+ */
+export const formatISTDateTime = (isoString) => {
+  if (!isoString) return '';
+  const date = new Date(isoString);
+  return date.toLocaleString('en-IN', {
+    timeZone: 'Asia/Kolkata',
+    day: '2-digit',
+    month: 'short',
+    year: 'numeric',
+    hour: 'numeric',
+    minute: '2-digit',
+    hour12: true,
+  }) + ' IST';
+};

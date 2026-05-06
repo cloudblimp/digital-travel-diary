@@ -16,7 +16,7 @@ import TripLocationMap from '../components/TripLocationMap.jsx';
 import TripDetailHeroPlaceholder from '../components/TripDetailHeroPlaceholder.jsx';
 import CollaboratorsPanel from '../components/CollaboratorsPanel.jsx';
 import { FaCalendarAlt, FaArrowLeft, FaPlus } from 'react-icons/fa';
-import { parseLocalDate } from '../utils/dateUtils';
+import { parseLocalDate, formatISTDateTime } from '../utils/dateUtils';
 
 const containerVariants = {
   hidden:  { opacity: 0 },
@@ -283,11 +283,15 @@ export default function TripDetail() {
                           <div className="p-4">
                             <h3 className="font-semibold text-white mb-1">{entry.title}</h3>
                             {entry.location && <p className="text-sm text-emerald-200/80 mb-2">📍 {entry.location}</p>}
-                            <p className="text-sm text-emerald-200/60 mb-3">{new Date(entry.dateTime).toLocaleString()}</p>
-                            {entry.authorName && entry.authorId !== currentUser?.id && (
-                              <p className="text-xs text-emerald-400/70 mb-2">✍️ {entry.authorName}</p>
+                            {entry.dateTime && (
+                              <p className="text-sm text-emerald-200/60 mb-3">{formatISTDateTime(entry.dateTime)}</p>
                             )}
                             <p className="text-sm text-emerald-100 line-clamp-3">{entry.story}</p>
+                            {entry.authorName && (
+                              <p className="text-xs text-emerald-400/70 mt-3 pt-3 border-t border-emerald-500/20">
+                                ✍️ {entry.authorName}
+                              </p>
+                            )}
                           </div>
                         </motion.div>
                       ))

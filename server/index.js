@@ -77,6 +77,17 @@ io.on('connection', (socket) => {
 // ─── Middleware ─────────────────────────────────────
 app.use(helmet({
   crossOriginResourcePolicy: { policy: 'cross-origin' },
+  contentSecurityPolicy: {
+    directives: {
+      defaultSrc: ["'self'"],
+      scriptSrc:  ["'self'", "'unsafe-inline'"],
+      styleSrc:   ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com"],
+      fontSrc:    ["'self'", "https://fonts.gstatic.com"],
+      imgSrc:     ["'self'", "data:", "blob:", "https://res.cloudinary.com", "https://*.tile.openstreetmap.org"],
+      connectSrc: ["'self'", "https://nominatim.openstreetmap.org", "https://res.cloudinary.com", "wss:", "ws:"],
+      frameSrc:   ["'none'"],
+    },
+  },
 }));
 app.use(cors({
   origin: process.env.CLIENT_URL || 'http://localhost:5173',
